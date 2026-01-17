@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check In - Santa Cruz Waldorf School</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container form-container">
+        <h1>Visitor Check-In</h1>
+
+        <form id="checkinForm">
+            <div class="form-group">
+                <label for="visitorType">I am a:</label>
+                <select id="visitorType" name="visitorType" required>
+                    <option value="">-- Select Type --</option>
+                    <option value="Visitor">Visitor</option>
+                    <option value="Substitute">Substitute</option>
+                    <option value="Tour">Tour</option>
+                    <option value="Volunteer">Volunteer</option>
+                    <option value="Student Arriving">Student Arriving</option>
+                    <option value="Student Leaving">Student Leaving</option>
+                    <option value="Shadowing">Shadowing</option>
+                    <option value="Contractor">Contractor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="visitorName">Name:</label>
+                <input type="text" id="visitorName" name="visitorName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="action">Action:</label>
+                <select id="action" name="action" required>
+                    <option value="">-- Select Action --</option>
+                    <option value="Check-In">Check-In</option>
+                    <option value="Check-Out">Check-Out</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large">Submit</button>
+        </form>
+
+        <div id="message" class="message hidden"></div>
+
+        <a href="index.html" class="back-link">Back to Welcome</a>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
