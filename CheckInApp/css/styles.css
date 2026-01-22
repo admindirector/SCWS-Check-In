@@ -1,0 +1,205 @@
+/* Santa Cruz Waldorf School Check-In App Styles */
+/* Touch-optimized for tablet use */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #2d5a3d 0%, #4a7c59 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Welcome Page Styles */
+.logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.welcome-container h1 {
+    color: #2d5a3d;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.welcome-message {
+    color: #666;
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+}
+
+/* Form Page Styles */
+.form-container h1 {
+    color: #2d5a3d;
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background: #f8f9fa;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 20px;
+    padding-right: 50px;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: #4a7c59;
+    box-shadow: 0 0 0 4px rgba(74, 124, 89, 0.2);
+    background: white;
+}
+
+input[type="text"]::placeholder {
+    color: #999;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 18px 40px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
+    color: #2d5a3d;
+}
+
+.btn-large {
+    width: 100%;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+    min-height: 60px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Message Styles */
+.message {
+    margin-top: 20px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 2px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+}
+
+.message.hidden {
+    display: none;
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: #4a7c59;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Tablet Optimizations */
+@media (min-width: 768px) {
+    .container {
+        padding: 50px 60px;
+    }
+
+    .welcome-container h1 {
+        font-size: 2.5rem;
+    }
+
+    .welcome-message {
+        font-size: 1.5rem;
+    }
+}
+
+/* Ensure minimum touch target sizes (44px recommended by Apple) */
+input[type="text"],
+select,
+.btn {
+    min-height: 50px;
+}
+
+/* Loading state for button */
+.btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn.loading::after {
+    content: '...';
+}

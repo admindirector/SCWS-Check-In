@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Cruz Waldorf School - Check In</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #2d5a3d 0%, #4a7c59 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 25px;
+        }
+        h1 {
+            color: #2d5a3d;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .welcome-message {
+            color: #666;
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            min-height: 60px;
+            background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
+            color: #2d5a3d;
+        }
+        @media (min-width: 768px) {
+            .container { padding: 50px 60px; }
+            h1 { font-size: 2.5rem; }
+            .welcome-message { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://santacruzwaldorf.org/wp-content/uploads/2025/09/SCWS-50-logo-green-gold-ltgreen_SCWS-50-logo-green-gold-ltgreen.jpg" alt="Santa Cruz Waldorf School" class="logo">
+        <h1>Welcome to Santa Cruz Waldorf School!</h1>
+        <p class="welcome-message">Please click here to sign in</p>
+        <a href="checkin.html" class="btn">Sign In</a>
+    </div>
+</body>
+</html>

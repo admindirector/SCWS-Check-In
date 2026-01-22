@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Cruz Waldorf School - Check In</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #2d5a3d 0%, #4a7c59 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .hidden {
+            display: none !important;
+        }
+
+        /* Welcome Page Styles */
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 25px;
+        }
+        .welcome-container h1 {
+            color: #2d5a3d;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .welcome-message {
+            color: #666;
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+        }
+
+        /* Form Page Styles */
+        .form-container h1 {
+            color: #2d5a3d;
+            font-size: 1.75rem;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            background: #f8f9fa;
+            -webkit-appearance: none;
+            appearance: none;
+            min-height: 50px;
+        }
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 20px;
+            padding-right: 50px;
+        }
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #4a7c59;
+            box-shadow: 0 0 0 4px rgba(74, 124, 89, 0.2);
+            background: white;
+        }
+        input[type="text"]::placeholder {
+            color: #999;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            min-height: 60px;
+            background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
+            color: #2d5a3d;
+        }
+        .btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Message Styles */
+        .message {
+            margin-top: 20px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+        }
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #4a7c59;
+            text-decoration: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .container { padding: 50px 60px; }
+            .welcome-container h1 { font-size: 2.5rem; }
+            .welcome-message { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="container welcome-container">
+        <img src="https://santacruzwaldorf.org/wp-content/uploads/2025/09/SCWS-50-logo-green-gold-ltgreen_SCWS-50-logo-green-gold-ltgreen.jpg" alt="Santa Cruz Waldorf School" class="logo">
+        <h1>Welcome to Santa Cruz Waldorf School!</h1>
+        <p class="welcome-message">Please click here to sign in</p>
+        <button class="btn" onclick="showForm()">Sign In</button>
+    </div>
+
+    <!-- Check-In Form Screen -->
+    <div id="formScreen" class="container form-container hidden">
+        <h1>Visitor Check-In</h1>
+
+        <form id="checkinForm">
+            <div class="form-group">
+                <label for="visitorType">I am a:</label>
+                <select id="visitorType" name="visitorType" required>
+                    <option value="">-- Select Type --</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Specialty Teacher">Specialty Teacher</option>
+                    <option value="Substitute">Substitute</option>
+                    <option value="Visitor">Visitor</option>
+                    <option value="Tour">Tour</option>
+                    <option value="Volunteer">Volunteer</option>
+                    <option value="Student Arriving">Student Arriving</option>
+                    <option value="Student Leaving">Student Leaving</option>
+                    <option value="Shadowing">Shadowing</option>
+                    <option value="Contractor">Contractor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="visitorName">Name:</label>
+                <input type="text" id="visitorName" name="visitorName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="action">Action:</label>
+                <select id="action" name="action" required>
+                    <option value="">-- Select Action --</option>
+                    <option value="Check-In">Check-In</option>
+                    <option value="Check-Out">Check-Out</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+
+        <div id="message" class="message hidden"></div>
+
+        <span class="back-link" onclick="showWelcome()">Back to Welcome</span>
+    </div>
+
+    <script>
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqBdoT1t4kemPibbXB2MeS7Hbnpc1bl96OS0iDEiwEqmA55LRpFpkwdfCN7H3xVR0h7A/exec';
+
+        function showForm() {
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('formScreen').classList.remove('hidden');
+        }
+
+        function showWelcome() {
+            document.getElementById('formScreen').classList.add('hidden');
+            document.getElementById('welcomeScreen').classList.remove('hidden');
+            document.getElementById('checkinForm').reset();
+            document.getElementById('message').classList.add('hidden');
+        }
+
+        document.getElementById('checkinForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            const visitorType = document.getElementById('visitorType').value;
+            const visitorName = document.getElementById('visitorName').value.trim();
+            const action = document.getElementById('action').value;
+
+            if (!visitorType || !visitorName || !action) {
+                showMessage('Please fill in all fields.', 'error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            submitBtn.textContent = 'Submitting...';
+
+            const data = {
+                date: new Date().toLocaleDateString(),
+                time: new Date().toLocaleTimeString(),
+                name: visitorName,
+                visitorType: visitorType,
+                action: action
+            };
+
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                showMessage('Successfully recorded! Thank you.', 'success');
+
+                setTimeout(() => {
+                    showWelcome();
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('loading');
+                    submitBtn.textContent = 'Submit';
+                }, 2000);
+
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('There was an error. Please try again.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                submitBtn.textContent = 'Submit';
+            }
+        });
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = 'message ' + type;
+        }
+    </script>
+</body>
+</html>
